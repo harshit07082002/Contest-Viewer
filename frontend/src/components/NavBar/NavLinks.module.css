@@ -1,0 +1,35 @@
+.active{
+    color: white !important;
+}
+.li{
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.632);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+.li:hover{
+    color: white;
+}
+.bringSideBar{
+    right: 0 !important;
+}
+@media only screen and (max-width: 500px){
+    body{
+        overflow-x: hidden;
+    }
+    .heading{
+        font-size: 1.2rem;
+        margin-left: 1rem;
+    }   
+    nav{
+        justify-content: space-between;
+    }
+    .li{
+        font-size: 1rem ;
+        margin: 2rem 0;
+    }
+    .container{
+        display: none;
+    }
+}

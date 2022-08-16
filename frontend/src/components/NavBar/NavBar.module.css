@@ -1,0 +1,62 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+html,body{
+    overflow-x: hidden;
+  } 
+nav{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    top: 0;
+    background-color: rgb(38, 37, 37);
+    color: rgb(247, 243, 243);
+}
+.heading{
+    margin: 1rem 3rem;
+    font-weight: 600;
+    font-family: 'Ubuntu', sans-serif !important;
+    cursor:default;
+}
+.sidebar{
+    display:none;
+}
+.line{
+    width: 2.2rem;
+    height: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.877);
+    margin: 3px;
+}
+.container2{
+    display: none;
+}
+@media only screen and (max-width: 500px){
+    .sidebar{
+        display:block;
+        margin-right: 1rem;
+    }
+    nav{
+        justify-content: space-between;
+    }
+    .container2{
+        position:fixed;
+        display: flex !important;
+        flex-direction: column;
+        background-color: rgb(38, 37, 37);
+        height: 90vh;
+        min-width: fit-content;
+        width: 10rem;
+        top:59px;
+        align-items: center;
+        justify-content: start;
+        right: 0;
+    }
+}
+@media only screen and (max-width: 350px){
+    .container2{
+        top: 86px;
+        width: 7rem;
+    }
+}
