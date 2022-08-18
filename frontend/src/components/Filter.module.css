@@ -1,0 +1,62 @@
+.box {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: right;
+    margin-right: 4rem;
+  }
+  .box select:hover{
+    background-color: #2480ca;
+  }
+  .box select {
+    background-color: #0563af;
+    cursor: pointer;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    width: 220px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box::before {
+    content: "\f13a";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .box select option {
+    cursor: pointer;
+    padding: 30px;
+  }
+  @media only screen and (max-width: 928px){
+    .box{
+        /* justify-content:  center; */
+        text-align: center;
+    }
+    .box select{
+        text-align: center;
+        width: 150px;
+        font-size: 1rem;
+    }
+  }

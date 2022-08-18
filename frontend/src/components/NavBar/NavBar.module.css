@@ -5,6 +5,7 @@ html,body{
     overflow-x: hidden;
   } 
 nav{
+    z-index: 100;
     display: flex;
     position: fixed;
     width: 100%;
@@ -16,9 +17,10 @@ nav{
 }
 .heading{
     margin: 1rem 3rem;
-    font-weight: 600;
+    font-weight: 600 !important;
     font-family: 'Ubuntu', sans-serif !important;
     cursor:default;
+    font-size: 1.5rem;
 }
 .sidebar{
     display:none;

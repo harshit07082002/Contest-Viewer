@@ -1,0 +1,62 @@
+#logo{
+    height: 3rem;
+    border-radius: 30px;
+}
+.container{
+    width: 25rem !important;
+    height:fit-content;
+    min-height: 20rem !important;
+    margin: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.511);
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+    z-index: 1;
+}
+.name{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.name h2{
+    margin: 1rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(0, 0, 0, 0.724);
+    font-weight: 700;
+}
+.info{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    height: fit-content;
+}
+.info h4{
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.792);
+}
+.info p{
+    font-weight: 450;
+    color: black;
+}
+.container:hover{
+    background-color: rgb(3,79,132);
+    color: white;
+    top: -10px;
+}
+.container:hover .info p,.container:hover .info h4,.container:hover .name h2{
+    color: white;
+}
+@media only screen and (max-width: 928px){
+    .container{
+        padding: 1rem;
+    }
+    .name h2{
+        font-size: 1.1rem;
+    }
+    .info{
+        margin: 0;
+    }
+}

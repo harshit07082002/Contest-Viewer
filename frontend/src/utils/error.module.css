@@ -1,0 +1,27 @@
+.error{
+    width: fit-content;
+    position: fixed;
+    padding: 2rem;
+    top: 35vh;
+    left: 33vw;
+    right: 32vw;
+    bottom: 30vh;
+    font-size: 1.6rem;
+    font-weight: 500;
+    background-color: red !important;
+    border: 2px solid black !important;
+    color: white !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.error p{
+    margin: 0.8rem;
+}
+@media only screen and (max-width: 740px){
+    .error{
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+}

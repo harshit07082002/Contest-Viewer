@@ -1,9 +1,8 @@
 .card{
     background-color: rgb(255,255,255);
-    min-width: fit-content;
-    min-height: fit-content;
     border:1px solid rgb(244, 235, 235);
     color: black;
     border-radius: 10px;
     box-shadow: 0 0 11px rgba(177, 168, 168, 0.603);
+    margin-bottom: 1rem !important;
 }

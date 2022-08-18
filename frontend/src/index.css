@@ -33,5 +33,11 @@ body {
   transition: all 200ms;
 }
 main{
-  margin-top: 4rem;
+  margin-top: 3.7rem;
+  margin-bottom: 3rem;
+}
+@media only screen and (max-width: 350px){
+  main{
+    margin-top: 5.6rem;
+  }
 }
