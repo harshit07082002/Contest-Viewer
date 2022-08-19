@@ -44,7 +44,7 @@ const ContestPage = () => {
       loaderHandler(true);
       const data = await axios({
         method: "GET",
-        url: "http://localhost:8000/api/v1/contestData",
+        url: `${process.env.REACT_APP_BACKEND_URL}/contestData`,
       });
       const filteredData = filterData(data.data.data.contests);
       loaderHandler(false);
