@@ -51,15 +51,15 @@ const ContestItem = (props) => {
       <hr />
       <div className={classes.info}>
         <h4>Date: </h4>
-        <p>{date}</p>
+        <h3>{date}</h3>
       </div>
       <div className={classes.info}>
         <h4>Duration: </h4>
-        <p>{props.Contestlength}</p>
+        <h3>{props.Contestlength}</h3>
       </div>
       <div className={classes.info}>
         <h4>Rated Range: </h4>
-        <p>{props.ContestRated}</p>
+        <h3>{props.ContestRated}</h3>
       </div>
     </Card>
   );
