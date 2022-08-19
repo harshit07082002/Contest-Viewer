@@ -1,4 +1,6 @@
 const schedule = require("node-schedule");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 const express = require("express");
 const UpdateContestData = require("./controller/FetchContestData");
 const contestRouter = require("./router/contestRouter");
@@ -9,24 +11,33 @@ const app = express();
 app.use(cors());
 //Starting the Server
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server Started!!");
 });
 
 //Connecting Database
-const DATABASE_PASSWORD = "QLUSH9iEOHVct05Z";
+const DB = process.env.DATABASE.replace(
+  "<password>",
+  process.env.DATABASE_PASSWORD
+);
 mongoose
-  .connect(
-    `mongodb+srv://Tiger:${DATABASE_PASSWORD}@cluster0.iu403uy.mongodb.net/?retryWrites=true&w=majority`
-  )
-  .then(() => {
-    console.log("connected");
+  .connect(DB)
+  .then((res) => {
+    console.log("connection Succesful");
   })
-  .catch((error) => {
-    console.log(error.message);
+  .catch((e) => {
+    console.log("error");
   });
 
 app.use("/api/v1/contestData", contestRouter);
 
 // Updates Contests Data every Day
 schedule.scheduleJob("*/10 * * * *", UpdateContestData);
+
+//Server Error
+process.on("SIGTERM", () => {
+  console.log("👋 SIGTERM RECEIVED. Shutting down gracefully");
+  server.close(() => {
+    console.log("💥 Process terminated!");
+  });
+});
