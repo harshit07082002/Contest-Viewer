@@ -2,15 +2,16 @@ const puppeteer = require("puppeteer");
 const { GetMonthIndex } = require("./utils");
 
 const extractDate = (contestDate) => {
-  const date = contestDate.split(" ");
+  const newDate = contestDate.split(/\r?\n/);
+  const date = newDate[0].split(" ");
   const day = parseInt(date[0]);
   const month = GetMonthIndex(date[1]);
-  const year = parseInt(date[2].split("\\")[0]);
-  const time = date[3];
+  const year = parseInt(date[2]);
+  const time = newDate[1].split(" ")[1];
   const hour = parseInt(time.split(":")[0]);
   const minute = parseInt(time.split(":")[1]);
-  const newDate = new Date(year, month, day, hour, minute);
-  return newDate;
+  const FinalDate = new Date(year, month, day, hour, minute);
+  return FinalDate;
 };
 
 const extractRating = (contestRating) => {
@@ -20,7 +21,10 @@ const extractRating = (contestRating) => {
 
 module.exports = getCodechefContests = async () => {
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox"],
+    });
     const page = await browser.newPage();
 
     //Visit Codechef

@@ -25,14 +25,17 @@ const extractRatings = (name) => {
 
 module.exports = getCodeforcesContest = async () => {
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox"],
+    });
     const page = await browser.newPage();
 
     //Visit Codeforces
     await page.goto("https://codeforces.com/contests");
     await page.waitForSelector(".contestList .datatable");
 
-    //Fetch Contests Details
+    //Fetch Contests Details ok
     const contestDetails = await page.evaluate(() => {
       const upperList = document.querySelectorAll(".contestList .datatable");
       const List = upperList[0].querySelectorAll("div table tbody tr");
