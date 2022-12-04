@@ -2,15 +2,17 @@ const puppeteer = require("puppeteer");
 const { GetMonthIndex } = require("./utils");
 
 const extractDate = (contestDate) => {
-  const date = contestDate.split(" ");
+  const newDate = contestDate.split(/\r?\n/);
+  const date = newDate[0].split(" ");
   const day = parseInt(date[0]);
   const month = GetMonthIndex(date[1]);
-  const year = parseInt(date[2].split("\\")[0]);
-  const time = date[3];
+  const year = parseInt(date[2]);
+  const time = newDate[1].split(" ")[1];
   const hour = parseInt(time.split(":")[0]);
   const minute = parseInt(time.split(":")[1]);
-  const newDate = new Date(year, month, day, hour, minute);
-  return newDate;
+  const FinalDate = new Date(year, month, day, hour, minute);
+  console.log(FinalDate);
+  return FinalDate;
 };
 
 const extractRating = (contestRating) => {
@@ -20,14 +22,17 @@ const extractRating = (contestRating) => {
 
 module.exports = getCodechefContests = async () => {
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox"],
+    });
     const page = await browser.newPage();
 
     //Visit Codechef
     await page.goto(
       "https://www.codechef.com/contests/?itm_medium=navmenu&itm_campaign=allcontests"
     );
-    await page.waitForSelector("#future-contests-data tr");
+    await page.waitForSelector("._contest-tables__container_jhph2_201");
 
     //Fetch Contst Details
     const contestDetails = await page.evaluate(() => {
@@ -54,7 +59,6 @@ module.exports = getCodechefContests = async () => {
       return FinalInfo;
     });
     await browser.close();
-
     //Making Data to be savable at the Database
     let temp = [];
     contestDetails.forEach((element) => {
@@ -63,7 +67,7 @@ module.exports = getCodechefContests = async () => {
         ContestName: element[1],
         ContestDate: extractDate(element[2]),
         Contestlength: element[3],
-        ContestRated: extractRating(element[1]),
+        ContestRated: "",
       };
       temp.push(obj);
     });
