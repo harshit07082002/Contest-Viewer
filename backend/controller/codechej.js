@@ -11,6 +11,7 @@ const extractDate = (contestDate) => {
   const hour = parseInt(time.split(":")[0]);
   const minute = parseInt(time.split(":")[1]);
   const FinalDate = new Date(year, month, day, hour, minute);
+  console.log(FinalDate);
   return FinalDate;
 };
 
@@ -31,7 +32,7 @@ module.exports = getCodechefContests = async () => {
     await page.goto(
       "https://www.codechef.com/contests/?itm_medium=navmenu&itm_campaign=allcontests"
     );
-    await page.waitForSelector("#future-contests-data tr");
+    await page.waitForSelector("._contest-tables__container_jhph2_201");
 
     //Fetch Contst Details
     const contestDetails = await page.evaluate(() => {
@@ -58,7 +59,6 @@ module.exports = getCodechefContests = async () => {
       return FinalInfo;
     });
     await browser.close();
-
     //Making Data to be savable at the Database
     let temp = [];
     contestDetails.forEach((element) => {
@@ -67,7 +67,7 @@ module.exports = getCodechefContests = async () => {
         ContestName: element[1],
         ContestDate: extractDate(element[2]),
         Contestlength: element[3],
-        ContestRated: extractRating(element[1]),
+        ContestRated: "",
       };
       temp.push(obj);
     });

@@ -32,7 +32,7 @@ mongoose
 app.use("/api/v1/contestData", contestRouter);
 
 // Updates Contests Data every Day
-schedule.scheduleJob("* * * * *", UpdateContestData);
+schedule.scheduleJob("*/10 * * * *", UpdateContestData);
 
 //Server Error
 process.on("SIGTERM", () => {
