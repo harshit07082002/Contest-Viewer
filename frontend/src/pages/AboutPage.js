@@ -8,6 +8,8 @@ const About = () => {
       <h1>About Us</h1>
       <hr />
       <p>
+        hello
+        {process.env.REACT_APP_BACKEND_URL}
         Contest Viewer was started in August,2022 as an educational initiative
         for the programming community. It helps a person to get all the
         Competetive Programming Related Contest details at one Place.
