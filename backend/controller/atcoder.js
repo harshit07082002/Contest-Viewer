@@ -59,5 +59,6 @@ module.exports = getAtcoderContests = async () => {
     return temp;
   } catch (error) {
     console.log("⚠️" + error.message + "⚠️");
+    return [];
   }
 };

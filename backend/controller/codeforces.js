@@ -76,5 +76,6 @@ module.exports = getCodeforcesContest = async () => {
     return temp;
   } catch (error) {
     console.log("⚠️" + error.message + "⚠️");
+    return [];
   }
 };

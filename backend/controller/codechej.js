@@ -72,5 +72,6 @@ module.exports = getCodechefContests = async () => {
     return temp;
   } catch (error) {
     console.log("⚠️" + error.message + "⚠️");
+    return [];
   }
 };
